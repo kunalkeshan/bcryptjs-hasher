@@ -1,0 +1,30 @@
+{
+	"name": "bcryptjs-hasher",
+	"version": "0.0.0",
+	"description": "Application that is used to hash and compare passwords",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js",
+		"dev": "nodemon app.js",
+		"heroku-postbuild": "cd client && npm i && npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kunalkeshan/bcryptjs-hasher.git"
+	},
+	"author": "Kunal Keshan",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kunalkeshan/bcryptjs-hasher/issues"
+	},
+	"homepage": "https://github.com/kunalkeshan/bcryptjs-hasher#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"fastify": "^3.27.4",
+		"fastify-static": "^4.6.1"
+	}
+}
