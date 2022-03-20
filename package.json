@@ -24,6 +24,7 @@
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.0.0",
 		"fastify": "^3.27.4",
 		"fastify-static": "^4.6.1"
 	}
