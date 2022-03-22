@@ -1,6 +1,6 @@
 {
 	"name": "bcryptjs-hasher",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Application that is used to hash and compare passwords",
 	"main": "app.js",
 	"scripts": {
