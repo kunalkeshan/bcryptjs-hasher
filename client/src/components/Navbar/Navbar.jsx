@@ -30,7 +30,7 @@ function Navbar() {
 
   return (
     <div className='w-full bg-primary p-2'>
-      <div className='w-11/12 flex items-center justify-between md:w-4/5 mx-auto'>
+      <div className='w-11/12 flex items-center justify-between md:w-4/5 lg:w-3/5 mx-auto'>
         <Link className='text-2xl md:text-3xl font-bold uppercase' to='/'>Bcrypt-Hasher</Link>
         <div className='flex items-center gap-2'>
           <GitHubIcon className='cursor-pointer' onClick={handleGitHubClick} />
