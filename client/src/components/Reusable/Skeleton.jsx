@@ -1,3 +1,8 @@
+/**
+ * Skeleton component
+ */
+
+// Dependencies
 import React from 'react'
 
 function Skeleton() {

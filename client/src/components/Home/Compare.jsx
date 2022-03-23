@@ -5,11 +5,17 @@
 // Dependencies
 import React, { useState } from 'react';
 import { compareString } from './helper';
+import { useDispatch } from 'react-redux';
 
 // Material UI
 import TextField from '@mui/material/TextField';
 
+// Actions
+import { showLoading, showSnackbar } from '../../store/features/app';
+
 function Compare() {
+    const dispatch = useDispatch();
+
     // Input States
     const [string, setString] = useState('');
     const [hashed, setHashed] = useState('');
@@ -30,13 +36,16 @@ function Compare() {
 
     const handleCompareString = async (e) => {
         e.preventDefault();
+        dispatch(showLoading(true));
         try {
-            const matchedData = await compareString({string, hashed});
-            handleMatched({text: `${matchedData.matched}`, matching: matchedData.matched});
+            const matchedData = await compareString({ string, hashed });
+            handleMatched({ text: `${matchedData.matched}`, matching: matchedData.matched });
             setString(matchedData.string);
             setHashed(matchedData.hashed);
         } catch (error) {
-            console.log(error);
+            dispatch(showSnackbar({ message: 'Something went wrong! Please try again' }));
+        } finally {
+            dispatch(showLoading(false));
         }
     }
 
@@ -46,7 +55,7 @@ function Compare() {
             <form
                 className='flex flex-col gap-4 mt-4'
                 onSubmit={handleCompareString}
-                autoComplete='false'
+                autoComplete='off'
             >
                 <TextField
                     value={string}
