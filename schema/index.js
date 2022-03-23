@@ -44,7 +44,7 @@ appSchema.compareValidation = {
             required: ['matched'],
             properties: {
                 string: { type: 'string' },
-                matched: { type: 'string' },
+                matched: { type: 'boolean' },
                 hashed: { type: 'string' },
             }
         }

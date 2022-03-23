@@ -4,23 +4,18 @@
 
 // Dependencies
 import React, { useState } from 'react';
-import backend from '../../utils/backend';
+import { hashString } from './helper';
 
 // Material UI
 import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
 
 function Hash() {
     // Input States
     const [string, setString] = useState('');
     const [salt, setSalt] = useState('');
-    const [rounds, setRounds] = useState(0);
+    const [rounds, setRounds] = useState(10);
 
     const [hashed, setHashed] = useState('Hashed String here')
-
-    // Error States
-    const [strError, setStrError] = useState(false);
-    const [disabled, setDisabled] = useState(true);
 
     const handleString = (e) => {
         setString(e.target.value);
@@ -37,14 +32,17 @@ function Hash() {
     const handleHashString = async (e) => {
         e.preventDefault();
         try {
-            
+            const hashedData = await hashString({string, salt, rounds});
+            setHashed(hashedData.hashed);
+            setRounds(hashedData.rounds);
+            setSalt(hashedData.salt);
         } catch (error) {
-            
+            console.log(error);
         }
     }
 
     return (
-        <section className='w-full'>
+        <section className='w-full md:w-1/2 p-2 max-w-lg mx-auto'>
             <h2 className='text-4xl font-bold'>Hash</h2>
             <form
                 autoComplete='false'
@@ -56,8 +54,9 @@ function Hash() {
                     onChange={handleString}
                     label="String"
                     variant="outlined"
+                    required={true}
                 />
-                <div className='flex gap-2 w-full'>
+                <div className='flex gap-2 w-full py-1'>
                     <TextField
                         type='number'
                         value={rounds}
@@ -79,11 +78,10 @@ function Hash() {
                 </div>
                 <button
                     type='submit'
-                    disabled={disabled}
-                    className='bg-primary px-2 py-1 rounded fond-semibold hover:text-white'
+                    className='w-full max-w-[200px] mx-auto cursor-pointer bg-primary px-2 py-1 rounded fond-semibold hover:text-white'
                 >Hash</button>
             </form>
-            <div className='w-full py-4 mt-4 bg-gray-400 rounded flex items-center justify-center'>
+            <div className='w-full py-4 mt-4 font-semibold bg-gray-300 rounded flex items-center justify-center text-xs select-all'>
                 {hashed}
             </div>
         </section>
