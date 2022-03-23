@@ -5,11 +5,16 @@
 // Dependencies
 import React, { useState } from 'react';
 import { hashString } from './helper';
+import { useDispatch } from 'react-redux';
 
 // Material UI
 import TextField from '@mui/material/TextField';
 
+// Actions
+import { showLoading, showSnackbar } from '../../store/features/app';
+
 function Hash() {
+    const dispatch = useDispatch();
     // Input States
     const [string, setString] = useState('');
     const [salt, setSalt] = useState('');
@@ -31,13 +36,16 @@ function Hash() {
 
     const handleHashString = async (e) => {
         e.preventDefault();
+        dispatch(showLoading(true));
         try {
-            const hashedData = await hashString({string, salt, rounds});
+            const hashedData = await hashString({ string, salt, rounds });
             setHashed(hashedData.hashed);
             setRounds(hashedData.rounds);
             setSalt(hashedData.salt);
         } catch (error) {
-            console.log(error);
+            dispatch(showSnackbar({ message: 'Something went wrong! Please try again' }));
+        } finally {
+            dispatch(showLoading(false));
         }
     }
 
@@ -45,7 +53,7 @@ function Hash() {
         <section className='w-full md:w-1/2 p-2 max-w-lg mx-auto'>
             <h2 className='text-4xl font-bold'>Hash</h2>
             <form
-                autoComplete='false'
+                autoComplete='off'
                 className='flex flex-col gap-4 mt-4'
                 onSubmit={handleHashString}
             >

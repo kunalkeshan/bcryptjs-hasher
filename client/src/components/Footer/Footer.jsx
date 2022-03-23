@@ -8,7 +8,7 @@ import React from 'react';
 function Footer() {
     const CURRENT_YEAR = new Date().getFullYear();
     return (
-        <footer className='w-full text-center text-md'>
+        <footer className='w-full text-center text-md py-2'>
             &#169; 2022 - {CURRENT_YEAR},
             &nbsp;<a href="https://kunalkeshan.dev" className='underline hover:text-primary transition-all duration-200'>Kunal Keshan</a>
         </footer>

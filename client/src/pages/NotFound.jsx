@@ -11,7 +11,7 @@ import { Navbar } from '../components/Navbar';
 
 function NotFound() {
   return (
-    <div className='w-full h-full flex flex-col'>
+    <div className='w-full min-h-full flex flex-col'>
       <Navbar />
       <section className='flex flex-wrap flex-1 p-4 w-fit mx-auto sm:items-center sm:justify-center gap-4 md:gap-10'>
         <img src={NotFoundImage} alt='Not Found' className='w-72 mx-auto sm:w-80 md:w-96' />

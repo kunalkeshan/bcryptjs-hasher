@@ -11,9 +11,9 @@ import { Navbar } from '../components/Navbar';
 
 function Home() {
   return (
-    <div className='w-full h-full flex flex-col'>
+    <div className='w-full min-h-full flex flex-col'>
       <Navbar />
-      <main className='w-full h-full flex flex-wrap items-center justify-center p-4'>
+      <main className='w-full h-full flex-1 flex flex-wrap items-center justify-center p-4'>
         <Hash />
         <Compare />
       </main>
