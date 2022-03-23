@@ -7,7 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node app.js",
 		"dev": "nodemon app.js",
-		"heroku-postbuild": "cd client && npm i && npm run build"
+		"build": "cd client && npm i && npm run build"
 	},
 	"repository": {
 		"type": "git",
